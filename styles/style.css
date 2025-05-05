@@ -95,6 +95,50 @@ p{
     width: 100%;
 }
 
+.barra-busqueda {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #cac6c6;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .barra-busqueda input{
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+  }
+  
+  .filtro {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .barra-busqueda button {
+    background-color: #053347;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .barra-busqueda button:hover {
+    background-color: #de2229;
+  }
+
 .small-container{
     max-width: 1080px;
     margin: auto;
@@ -150,6 +194,28 @@ h4{
 .col-4:hover{
     transform: translateY(-5px);
 }
+
+.btn-buy {
+    background-color: #053347; 
+    color: white;
+    padding: 12px 24px;
+    font-size: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-buy:hover {
+    background-color: #de2229;
+    transform: scale(1.05);
+  }
+  
+  .btn-buy:active {
+    transform: scale(0.98);
+    background-color: #de2229;
+  }
 
 .offer {
     background: radial-gradient(#fff, #ffd6d6);
@@ -282,4 +348,16 @@ ul{
 
 .copyright{
     text-align: center;
+}
+
+
+/* Media Query 600 screen size */
+
+@media only screen and (max-width: 600px){
+    .row{
+        text-align: center;
+    }
+    .col-2, .col-3, .col-4{
+        flex-basis: 100%;
+    }
 }
