@@ -11,7 +11,7 @@
 
 </head>
 <body>
-    <div class="header">      
+  
     <div class="container">
 
         <div class="navbar">
@@ -20,7 +20,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="/inicio.html">Inicio</a></li>
+                    <li><a href="/index.html">Inicio</a></li>
                     <li><a href="/productos.html">Productos</a></li>
                     <li><a href="/acerca.html">Acerca</a></li>
                     <li><a href="/contacto.html">Contacto</a></li>
@@ -29,53 +29,21 @@
             </nav>
             <img src="img/cart.png" width="30px" height="30px">
        </div>
-       <div class="row">
-        <div class="col-2">
-            <h1>Equipate con lo mejor<br>¡Nuevos Ingresos!</h1>
-            <p>El éxito es la suma de pequeños esfuerzos repetidos día tras día.<br>La disciplina es el puente entre metas y logros.</p>
-            <a href="" class="btn">Ver Ahora</a>
-        </div>
-        <div class="col-2">
-            <img src="/img/portada.png">
-        </div>
-       </div>
     </div>
-</div>
 
-<div class="categories">
-    <div class="small-container">
-        <div class="row">
-            <div class="col-3">
-                <img src="img/category-1.png">
-            </div>
-            <div class="col-3">
-                <img src="/img/category-2.png">
-            </div>
-            <div class="col-3">
-                <img src="/img/category-3.png">
-            </div>
-        </div>
-    </div> 
-</div>
-
-<form class="barra-busqueda" action="#" method="get">
-    <input type="text" name="busqueda" placeholder="Buscar artículo" />
-  
-    <label class="filtro">
-      <input type="checkbox" name="ofertas" />
-      Destacados
-    </label>
-  
-    <label class="filtro">
-      <input type="checkbox" name="nuevos" />
-      Ultimos Productos
-    </label>
-  
-    <button type="submit">Buscar</button>
-  </form>
 
 <div class="small-container">
-    <h2 class="title">Productos Destacados</h2>
+    <div class="row row-2">
+        <h2>Todos los Productos</h2>
+        <select>
+            <option>Por Defecto</option>
+            <option>Mejor Precio</option>
+            <option>Mas Vendido</option>
+            <option>Valoración</option>
+            <option>Ofertas</option>
+        </select>
+    </div>
+
     <div class="row">
     <div class="col-4">
         <img src="/img/remera-compresion.png">
@@ -133,7 +101,6 @@
                     <button class="btn-buy">Comprar</button>
                 </div>
             </div>
-            <h2 class="title">Ultimos Productos</h2>
             <div class="row">
                 <div class="col-4">
                     <img src="img/short-deportivo-azul.png">
@@ -248,94 +215,12 @@
                         <button class="btn-buy">Comprar</button>
                     </div>
                 </div>
-            </div>
 
-            <div class="offer">
-                <div class="small-container">
-                    <div class="row">
-                        <div class="col-2">
-                            <img src="img/smart-band.png" class="offer-img">
-                        </div>
-                        <div class="col-2">
-                            <p>Disponible exclusivamente en nuestra tienda Online</p>
-                            <h1>Smart Band Deportiva</h1>
-                            <small>Con un diseño moderno, ligero y elegante, esta banda inteligente ha sido creada para seguirte el ritmo, estés donde estés. 
-                                Su pantalla vibrante te muestra al instante tu frecuencia cardíaca, pasos dados ycalorías.</small>
-                            <a href="" class="btn">Comprar Ahora</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial">
-                <div class="small-container">
-                    <div class="row">
-                        <div class="col-3">
-                            <i class="ri-chat-quote-line"></i>
-                            <p>Me compré las calzas térmicas y son lo más. Se ajustan perfecto, no se bajan con el movimiento y además tienen bolsillos (¡al fin!). 
-                                Súper cómodas para entrenar o salir.
-                            </p>
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-half-line"></i>
-                            </div>
-                            <img src="/img/user-1.png" >
-                            <h3>LauFitStyle</h3>
-                        </div>
-                        <div class="col-3">
-                            <i class="ri-chat-quote-line"></i>
-                            <p>La remera dry-fit que compré es excelente. No transpira nada, seca rapidísimo y encima tiene buen diseño. Ideal para entrenamientos intensos.
-                            </p>
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-half-line"></i>
-                            </div>
-                            <img src="/img/user-2.png" >
-                            <h3>NicoPower89</h3>
-                        </div>
-                        <div class="col-3">
-                            <i class="ri-chat-quote-line"></i>
-                            <p>El top deportivo tiene una sujeción increíble y el material es suave pero resistente. 
-                            Lo uso para todo: yoga, spinning, caminatas largas. Re vale la pena, más cómodo que otros más caros que he probado.
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-half-line"></i>
-                            </div>
-                            <img src="/img/user-3.png" >
-                            <h3>Clara.Moves</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="method-paid">
-                <div class="small-container">
-                    <div class="row">
-                        <div class="col-5">
-                            <img src="/img/logo-visa.png" >
-                        </div>
-                        <div class="col-5">
-                            <img src="/img/logo-mc.png" >
-                        </div>
-                        <div class="col-5">
-                            <img src="/img/logo-brubank.png" >
-                        </div>
-                        <div class="col-5">
-                            <img src="/img/logo-mp.png" >
-                        </div>
-                        <div class="col-5">
-                            <img src="/img/logo-paypal.png" >
-                        </div>
-                    </div>
+                <div class="page-btn">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
                 </div>
             </div>
 
