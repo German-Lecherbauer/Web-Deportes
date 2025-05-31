@@ -1,323 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProAthletic</title>
+    <title>Pro Athletic Deportes</title>
     <link rel="stylesheet" href="/styles/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"rel="stylesheet"/>
-
+    
 </head>
 <body>
-    <div class="header">      
-    <div class="container">
+    <header>
+        <h1>Pro Athletic</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <div class="navbar">
-            <div class="logo">
-                <img src="img/ProAthletic.png" width="125px">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/inicio.html">Inicio</a></li>
-                    <li><a href="/productos.html">Productos</a></li>
-                    <li><a href="/acerca.html">Acerca</a></li>
-                    <li><a href="/contacto.html">Contacto</a></li>
-                    <li><a href="/cuenta.html">Cuenta</a></li>
-                </ul>
-            </nav>
-            <img src="img/cart.png" width="30px" height="30px">
-       </div>
-       <div class="row">
-        <div class="col-2">
-            <h1>Equipate con lo mejor<br>¡Nuevos Ingresos!</h1>
-            <p>El éxito es la suma de pequeños esfuerzos repetidos día tras día.<br>La disciplina es el puente entre metas y logros.</p>
-            <a href="" class="btn">Ver Ahora</a>
-        </div>
-        <div class="col-2">
-            <img src="/img/portada.png">
-        </div>
-       </div>
+    <section class="hero">
+    <div class="hero-content">
+        <h2>Bienvenido a Pro Athletic</h2>
+        <p>Tu tienda de ropa deportiva premium</p>
+        <a href="#" class="hero-btn">Ver Productos</a>
     </div>
-</div>
-
-<div class="categories">
-    <div class="small-container">
-        <div class="row">
-            <div class="col-3">
-                <img src="img/category-1.png">
-            </div>
-            <div class="col-3">
-                <img src="/img/category-2.png">
-            </div>
-            <div class="col-3">
-                <img src="/img/category-3.png">
-            </div>
+</section>
+   
+    <div class="container">
+       <aside class="filtros">
+        <h2>Filtros</h2>
+        <div class="filtro">
+            <input type="text" placeholder="Buscar productos" />
+            <label><input type="checkbox" /> Ofertas</label>
+            <label><input type="checkbox" /> Envío gratis</label>
         </div>
-    </div> 
-</div>
+        </aside>
 
-<form class="barra-busqueda" action="#" method="get">
-    <input type="text" name="busqueda" placeholder="Buscar artículo" />
-  
-    <label class="filtro">
-      <input type="checkbox" name="ofertas" />
-      Destacados
-    </label>
-  
-    <label class="filtro">
-      <input type="checkbox" name="nuevos" />
-      Ultimos Productos
-    </label>
-  
-    <button type="submit">Buscar</button>
-  </form>
+        <main>
+            <section class="product-grid">
+                <article class="product-card">
+                <img src="img/remera-compresion.png" alt="Remera Compresion">
+                <h3>Remera Compresion</h3>
+                <p>Remera 100% neoprene</p>
+                <p>Precio: $40000</p>
+                <button>Comprar</button>
+                </article>
 
-<div class="small-container">
-    <h2 class="title">Productos Destacados</h2>
-    <div class="row">
-    <div class="col-4">
-        <img src="/img/remera-compresion.png">
-        <h4>Remera de Compresion</h4>
-        <div class="rating">
-            <i class="ri-star-fill"></i>
-            <i class="ri-star-fill"></i>
-            <i class="ri-star-fill"></i>
-            <i class="ri-star-fill"></i>
-            <i class="ri-star-half-line"></i>
-        </div>
-        <p>$40.000</p>
-        <button class="btn-buy">Comprar</button>
-        </div>
+                <article class="product-card">
+                <img src="img/calza-mujer.png" alt="Calza Mujer">
+                <h3>Calza Mujer</h3>
+                <p>Calza Negra 100% algodon</p>
+                <p>Precio: $50000</p>
+                <button>Comprar</button>
+                </article>
 
-        <div class="col-4">
-            <img src="/img/zapatilla-airfly.png">
-            <h4>Zapatillas AirFly</h4>
-            <div class="rating">
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-            </div>
-            <p>$120.000</p>
-            <button class="btn-buy">Comprar</button>
-            </div>
+                <article class="product-card">
+                <img src="img/jogging-azul.png" alt="Jogging Azul">
+                <h3>Jogging Hombre</h3>
+                <p>Joggin Azul 100% algodon </p>
+                <p>Precio: $50000</p>
+                <button>Comprar</button>
+                </article>
+                
+                <article class="product-card">
+                <img src="img/musculosa-mujer.png" alt="Musculosa Mujer">
+                <h3>Musculosa Mujer</h3>
+                <p>Musculosa Negra</p>
+                <p>Precio: $40000</p>
+                <button>Comprar</button>
+                </article>
 
-            <div class="col-4">
-                <img src="/img/reloj-garmin.png">
-                <h4>Reloj Garmin</h4>
-                <div class="rating">
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-line"></i>
-                </div>
-                <p>$300.000</p>
-                <button class="btn-buy">Comprar</button>
-                </div>
+                <article class="product-card">
+                <img src="img/short-deporitvo-mujer-gris.png" alt="Short Deportivo Mujer">
+                <h3>Short Deportivo Mujer</h3>
+                <p>Short gris de algodon</p>
+                <p>Precio: $50000</p>
+                <button>Comprar</button>
+                </article>
 
-                <div class="col-4">
-                    <img src="/img/short-deportivo.png">
-                    <h4>Short Deportivo Negro</h4>
-                    <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-half-line"></i>
-                    </div>
-                    <p>$100.00</p>
-                    <button class="btn-buy">Comprar</button>
-                </div>
-            </div>
-            <h2 class="title">Ultimos Productos</h2>
-            <div class="row">
-                <div class="col-4">
-                    <img src="img/short-deportivo-azul.png">
-                    <h4>Short Deportivo Azul</h4>
-                    <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-half-line"></i>
-                    </div>
-                    <p>$80.000</p>
-                    <button class="btn-buy">Comprar</button>
-                    </div>
-            
-                    <div class="col-4">
-                        <img src="/img/guantes-fitness.png">
-                        <h4>Guantes Fitness </h4>
-                        <div class="rating">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                        </div>
-                        <p>$60.000</p>
-                        <button class="btn-buy">Comprar</button>
-                        </div>
-            
-                        <div class="col-4">
-                            <img src="/img/musculosa-mujer.png">
-                            <h4>Musculosa Deportiva</h4>
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                            </div>
-                            <p>$100.000</p>
-                            <button class="btn-buy">Comprar</button>
-                            </div>
-            
-                            <div class="col-4">
-                                <img src="/img/short-deporitvo-mujer-gris.png">
-                                <h4>Short Deportivo Mujer Gris</h4>
-                                <div class="rating">
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-fill"></i>
-                                    <i class="ri-star-line"></i>
-                                </div>
-                                <p>$80.000</p>
-                                <button class="btn-buy">Comprar</button>
-                            </div>
-                        </div>
-                        <div class="row">
-        <div class="col-4">
-            <img src="img/zapatillas-negras.png">
-            <h4>Zapatillas Negras</h4>
-            <div class="rating">
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-fill"></i>
-                <i class="ri-star-line"></i>
-                <i class="ri-star-line"></i>
-            </div>
-            <p>$140.000</p>
-            <button class="btn-buy">Comprar</button>
-            </div>
+                <article class="product-card">
+                <img src="img/short-deportivo-azul.png" alt="Short Deportivo Hombre">
+                <h3>Short Deportivo Hombre</h3>
+                <p>Short Azul de algodon</p>
+                <p>Precio: $50000</p>
+                <button>Comprar</button>
+                </article>
 
-            <div class="col-4">
-                <img src="/img/calza-mujer.png">
-                <h4>Calza Mujer</h4>
-                <div class="rating">
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                </div>
-                <p>$100.000</p>
-                <button class="btn-buy">Comprar</button>
-                </div>
+                <article class="product-card">
+                <img src="img/zapatilla-airfly.png" alt="Zapatillas Air Fly">
+                <h3>Zapatillas Air Fly</h3>
+                <p>Zapatillas deportivas</p>
+                <p>Precio: $100000</p>
+                <button>Comprar</button>
+                </article>
 
-                <div class="col-4">
-                    <img src="/img/top-deportivo.png">
-                    <h4>Top Deportivo Mujer</h4>
-                    <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-line"></i>
-                    </div>
-                    <p>$60.000</p>
-                    <button class="btn-buy">Comprar</button>
-                    </div>
+                <article class="product-card">
+                <img src="img/zapatillas-negras.png" alt="Zapatillas Negras">
+                <h3>Zapatillas Negras </h3>
+                <p>Zapatillas deportivas Negras</p>
+                <p>Precio: $100000</p>
+                <button>Comprar</button>
+                </article>
 
-                    <div class="col-4">
-                        <img src="/img/jogging-azul.png">
-                        <h4>Jogging Azul</h4>
-                        <div class="rating">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-half-line"></i>
-                        </div>
-                        <p>$120.000</p>
-                        <button class="btn-buy">Comprar</button>
-                    </div>
-                </div>
-            </div>
+                 <article class="product-card">
+                <img src="/img/reloj-garmin.png" alt="Reloj Garmin">
+                <h3>Reloj Garmin</h3>
+                <p>Reloj Garmin Deportivo </p>
+                <p>Precio: $200000</p>
+                <button>Comprar</button>
+                </article>
 
-            <div class="offer">
-                <div class="small-container">
-                    <div class="row">
-                        <div class="col-2">
-                            <img src="img/smart-band.png" class="offer-img">
-                        </div>
-                        <div class="col-2">
-                            <p>Disponible exclusivamente en nuestra tienda Online</p>
-                            <h1>Smart Band Deportiva</h1>
-                            <small>Con un diseño moderno, ligero y elegante, esta banda inteligente ha sido creada para seguirte el ritmo, estés donde estés. 
-                                Su pantalla vibrante te muestra al instante tu frecuencia cardíaca, pasos dados ycalorías.</small>
-                            <a href="" class="btn">Comprar Ahora</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <article class="product-card">
+                <img src="/img/guantes-fitness.png" alt="Guantes Fitness">
+                <h3>Guantes Fitness</h3>
+                <p>Guantes deportivos Negros </p>
+                <p>Precio: $40000</p>
+                <button>Comprar</button>
+                </article>
 
-            <div class="testimonial">
-                <div class="small-container">
-                    <div class="row">
-                        <div class="col-3">
-                            <i class="ri-chat-quote-line"></i>
-                            <p>Me compré las calzas térmicas y son lo más. Se ajustan perfecto, no se bajan con el movimiento y además tienen bolsillos (¡al fin!). 
-                                Súper cómodas para entrenar o salir.
-                            </p>
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-half-line"></i>
-                            </div>
-                            <img src="/img/user-1.png" >
-                            <h3>LauFitStyle</h3>
-                        </div>
-                        <div class="col-3">
-                            <i class="ri-chat-quote-line"></i>
-                            <p>La remera dry-fit que compré es excelente. No transpira nada, seca rapidísimo y encima tiene buen diseño. Ideal para entrenamientos intensos.
-                            </p>
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-half-line"></i>
-                            </div>
-                            <img src="/img/user-2.png" >
-                            <h3>NicoPower89</h3>
-                        </div>
-                        <div class="col-3">
-                            <i class="ri-chat-quote-line"></i>
-                            <p>El top deportivo tiene una sujeción increíble y el material es suave pero resistente. 
-                            Lo uso para todo: yoga, spinning, caminatas largas. Re vale la pena, más cómodo que otros más caros que he probado.
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-half-line"></i>
-                            </div>
-                            <img src="/img/user-3.png" >
-                            <h3>Clara.Moves</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <article class="product-card">
+                <img src="/img/top-deportivo.png" alt="Top Deportivo">
+                <h3>Top Derportivo</h3>
+                <p>Top deportivo negro algodon</p>
+                <p>Precio: $80000</p>
+                <button>Comprar</button>
+                </article>
 
-            <div class="method-paid">
+                <article class="product-card">
+                <img src="/img/top-deportivo.png" alt="Top Deportivo">
+                <h3>Top Derportivo</h3>
+                <p>Top deportivo negro algodon</p>
+                <p>Precio: $80000</p>
+                <button>Comprar</button>
+                </article>
+
+
+            </section>
+        </main>
+    </div>
+
+     <div class="method-paid">
                 <div class="small-container">
                     <div class="row">
                         <div class="col-5">
@@ -339,43 +163,29 @@
                 </div>
             </div>
 
-            <div class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="footer-col-1">
-                            <h3>Descargar nuestra App</h3>
-                            <p>Descarga nuestra app para dispositivos Android o IOS</p>
-                            <div class="app-logo">
-                                <img src="/img/play-store.png">
-                                <img src="/img/app-store.png">
-                            </div>
-                        </div>
-                        <div class="footer-col-2">
-                            <img src="/img/ProAthletic.png">
-                        </div>
-                        <div class="footer-col-3">
-                            <h3>Links</h3>
-                            <ul>
-                                <li>Cupones</li>
-                                <li>Blog</li>
-                                <li>Politica de Privacidad</li>
-                                <li>Afiliarse</li>
-                            </ul>
-                        </div>
-                        <div class="footer-col-4">
-                            <h3>Siguenos</h3>
-                            <ul>
-                                <li>Facebook</li>
-                                <li>X</li>
-                                <li>Instagram</li>
-                                <li>YouTube</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <hr>
-                    <p class="copyright">&copy German-Lecherbauer</p>
-                </div>
-            </div>
-
+   <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h3>Pro Athletic</h3>
+      <p>Tu tienda de ropa deportiva de confianza.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Enlaces</h4>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">Carrito</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p>Email: info@proathletic.com</p>
+      <p>Tel: +54 11 1234 5678</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Pro Athletic. Todos los derechos reservados.</p>
+  </div>
+</footer>
 </body>
-</html>
