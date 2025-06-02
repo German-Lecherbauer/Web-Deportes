@@ -157,28 +157,19 @@ nav ul a {
   margin-top: 1.5rem;
 }
 
-.filtro-categorias h3,
-.filtro-precio h3 {
+.filtro-categorias h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   color: #003B5C;
 }
 
-.filtro-categorias label,
-.filtro-precio label {
+.filtro-categorias label {
   display: block;
   margin-bottom: 0.5rem;
   font-size: 1rem;
   cursor: pointer;
 }
 
-.filtro-precio input[type="number"] {
-  width: 100px;
-  padding: 0.3rem 0.5rem;
-  margin-left: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
 
 .filtro-acciones {
   margin-top: 2rem;
@@ -206,7 +197,6 @@ nav ul a {
 .btn-aplicar:hover, .btn-limpiar:hover {
   background-color: #de2229;
 }
-
 
 /* Main */
 

@@ -29,10 +29,10 @@
 </section>
    
     <div class="container">
-       <aside class="filtros">
+        <aside class="filtros">
         <h2>Filtros</h2>
         <div class="filtro">
-            <input type="text" placeholder="Buscar productos" />
+            <input  id="input-search-products" type="text" placeholder="Buscar productos" />
             <label><input type="checkbox" /> Ofertas</label>
             <label><input type="checkbox" /> Envío gratis</label>
         </div>
@@ -42,16 +42,10 @@
         <label><input type="checkbox" name="categoria" value="remeras" /> Remeras</label>
         <label><input type="checkbox" name="categoria" value="musculosas" /> Musculosas</label>
         <label><input type="checkbox" name="categoria" value="calzas" /> Calzas</label>
-        <label><input type="checkbox" name="categoria" value="joggins" /> Joggins</label>
-        <label><input type="checkbox" name="categoria" value="Shorts" /> Shorts</label>
+        <label><input type="checkbox" name="categoria" value="buzos" /> Buzos</label>
+        <label><input type="checkbox" name="categoria" value="shorts" /> Shorts</label>
         <label><input type="checkbox" name="categoria" value="zapatillas" /> Zapatillas</label>
         <label><input type="checkbox" name="categoria" value="accesorios" /> Accesorios</label>
-        </div>
-
-        <div class="filtro-precio">
-        <h3>Precio</h3>
-        <label>Desde: <input type="number" min="0" step="1000" placeholder="0" /></label>
-        <label>Hasta: <input type="number" min="0" step="1000" placeholder="100000" /></label>
         </div>
 
         <div class="filtro-acciones">
@@ -60,6 +54,7 @@
 
         </div>
         </aside>
+        
 
         <main>
             <section class="product-grid">
