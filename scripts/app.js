@@ -1,198 +1,10 @@
-const products = [
-    {
-        name: "Remera Compresion",
-        description: "Remera 100% neoprene",
-        price: 40000,
-        image: "img/remera-compresion.png",
-        link: "#",
-        category: "remeras"
-    },
-    {
-        name: "Calza Negra",
-        description: "Calza Negra 100% algodon",
-        price: 50000,
-        image: "img/calza-mujer.png",
-        link: "#",
-        category: "calzas"
-    },
-    {
-        name: "Jogging Hombre",
-        description: "Joggin Azul 100% algodon",
-        price: 50000,
-        image: "img/jogging-azul.png",
-        link: "#",
-        category: "joggins"
-    },
-    {
-        name: "Calza Gris",
-        description: "Calza Gris 100% algodon",
-        price: 50000,
-        image: "/img/calza-gris.png",
-        link: "#",
-        category: "calzas"
-    },
-    {
-        name: "Short Deportivo Mujer",
-        description: "Short gris de algodon",
-        price: 50000,
-        image: "img/short-deporitvo-mujer-gris.png",
-        link: "#",
-        category: "shorts"
-    },
-    {
-        name: "Short Hombre",
-        description: "Short Azul de algodon",
-        price: 50000,
-        image: "img/short-deportivo-azul.png",
-        link: "#",
-        category: "shorts"
-    },
+const API_TOKEN = 'patv3MjOov3yPa9fz.c6d73fc6340fc2cc9f136119de008878ee89d9358cb421b8d4ed4f92b5840bec';
+const BASE_ID = 'appQDPTOfv3whdbYR';
+const TABLE_NAME = 'Productos-Deportes';
+const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
-    {
-        name: "Zapatillas Grises",
-        description: "Zapatillas deportivas",
-        price: 100000,
-        image: "img/zapatillas-grises.png",
-        link: "#",
-        category: "zapatillas"
-    },
-    {
-        name: "Zapatillas Negras",
-        description: "Zapatillas deportivas Negras",
-        price: 100000,
-        image: "img/zapatillas-negras.png",
-        link: "#",
-        category: "zapatillas"
-    },
-    {
-        name: "Reloj Garmin",
-        description: "Reloj Garmin Deportivo",
-        price: 200000,
-        image: "img/reloj-garmin.png",
-        link: "#",
-        category: "accesorios"
-    },
-    {
-        name: "Guantes Fitness",
-        description: "Guantes deportivos Negros ",
-        price: 40000,
-        image: "img/guantes-fitness.png",
-        link: "#",
-        category: "accesorios"
-    },
-    {
-        name: "Top Deportivo",
-        description: "Top deportivo negro",
-        price: 80000,
-        image: "img/top-deportivo.png",
-        link: "#",
-        category: "remeras"
-    },
-    {
-        name: "Medias Deportivas",
-        description: "Medias Negras",
-        price: 10000,
-        image: "img/medias.png",
-        link: "#",
-        category: "accesorios"
-    },
-    {
-        name: "Short Negro",
-        description: "Short Negro Hombre",
-        price: 80000,
-        image: "img/short-negro.png",
-        link: "#",
-        category: "shorts"
-    },
-    {
-        name: "Straps Negros",
-        description: "Straps para  agarre",
-        price: 20000,
-        image: "img/straps.png",
-        link: "#",
-        category: "accesorios"
-    },
-    {
-        name: "Buzo Negro",
-        description: "Buzo de algodon Negro",
-        price: 80000,
-        image: "img/buzo-negro.png",
-        link: "#",
-        category: "buzos"
-    },
-    {
-        name: "Musculosa Compresion",
-        description: "Musculosa compresion gris",
-        price: 50000,
-        image: "img/musculosa-compresion.png",
-        link: "#",
-        category: "musculosas"
-    },
-    {
-        name: "Musculosa Mujer",
-        description: "Musculosa Negra",
-        price: 40000,
-        image: "img/musculosa-mujer.png",
-        link: "#",
-        category: "musculosas"
-    },
-    {
-        name: "Medias Blancas",
-        description: "Medias blancas rayas negras",
-        price: 10000,
-        image: "img/medias-blancas.png",
-        link: "#",
-        category: "accesorios"
-    },
-    {
-        name: "Buzo Azul",
-        description: "Buzo de algodon Azul",
-        price: 80000,
-        image: "img/buzo-azul.png",
-        link: "#",
-        category: "buzos"
-    },
-    {
-        name: "Reloj Deportivo Sport",
-        description: "Reloj Deportivo Sport",
-        price: 150000,
-        image: "img/reloj-deportivo.png",
-        link: "#",
-        category: "accesorios"
-    },
-    {
-        name: "Remera Deportiva",
-        description: "Remera Deportiva Blanca",
-        price: 50000,
-        image: "img/remera-blanca.png",
-        link: "#",
-        category: "remeras"
-    },
-    {
-        name: "Jogging Hombre",
-        description: "Jogging 100% algodon",
-        price: 50000,
-        image: "img/jogging-negro.png",
-        link: "#",
-        category: "joggins"
-    },
-    {
-        name: "Tiras Nasales",
-        description: "Tiras Nasales BRTH",
-        price: 30000,
-        image: "img/tiras-nasales.png",
-        link: "#",
-        category: "accesorios"
-    },
-       {
-        name: "Zapatillas Blancas",
-        description: "Zapatillas Deportivas blancas",
-        price: 100000,
-        image: "img/zapatilas-blancas.png",
-        link: "#",
-        category: "zapatillas"
-    }
- ];
+
+const products = [];
 
 
  const grid = document.querySelector('.product-grid');
@@ -256,11 +68,48 @@ function filterProducts(text){ //Define la función que se encarga de filtrar pr
     });
     renderProducts(filteredProducts); //Llama a renderProducts() con los productos filtrados, para mostrarlos en pantalla.
 }
- searchInput.addEventListener('input', (e) => { //Escucha cuando el usuario escribe en el campo de búsqueda 
-    filterProducts(e.target.value); //Cuando se escribe algo, se llama a filterProducts con el texto ingresado (e.target.value).
- });
 
- renderProducts(products); //cuando se carga la página por primera vez, se muestran todos los productos.
+
+ //Cargar productos desde air table
+
+async function fetchProductsFromAirtable() {
+    try {
+        const response = await fetch(API_URL, {
+            headers: {
+                Authorization: `Bearer ${API_TOKEN}`
+            }
+        });
+
+        const data = await response.json();
+
+        // VERIFICAR SI LA RESPUESTA TIENE ERROR
+        if (data.error) {
+            console.error('Error de la API de Airtable:', data.error);
+            return; // Cortá la ejecución para no usar data.records
+        }
+
+        const airtableProducts = data.records.map(record => {
+            return {
+                name: record.fields.Nombre || 'Sin nombre',
+                description: record.fields.Descripción || '',
+                price: record.fields.Precio || 0,
+                image: record.fields.Imagen ? record.fields.Imagen[0].url : 'img/placeholder.png',
+                category: record.fields.Categoría || '',
+                link: '#'
+            };
+        });
+
+        console.log('Productos procesados:', airtableProducts);
+
+        renderProducts(airtableProducts);
+
+        products.length = 0;
+        products.push(...airtableProducts);
+
+    } catch (error) {
+        console.error('Error al traer productos desde Airtable:', error);
+    }
+}
 
  /* Filtros Checkbok */
 
@@ -298,4 +147,5 @@ function applyFilters() {
 searchInput.addEventListener('input', () => {
     applyFilters();
 });
- 
+
+fetchProductsFromAirtable();
