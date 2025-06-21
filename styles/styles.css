@@ -470,7 +470,200 @@ nav ul li a {
   margin-top: 4rem;
 }
 
+/* Carrito */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px; /* Fuera de pantalla */
+  width: 350px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -3px 0 6px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Sidebar visible */
+.cart-sidebar.open {
+  right: 0;
+}
+
+/* Overlay para el fondo */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.cart-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Botón cerrar */
+#close-cart {
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+/* Cart items container */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.cart-item span {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cart-item-controls button {
+  padding: 4px 8px;
+  border: none;
+  background-color: #053347;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.cart-item-controls button:hover {
+  background-color: #07536c;
+}
+
+/* Footer */
+.cart-footer {
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+  font-weight: bold;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 /* Pagina contacto */
+
+
+
+/* Pagina Admin */
+
+.admin-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; 
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.form-section, .table-section {
+   background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form input, form select, form button {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+form button {
+  background-color: #053347;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background-color: #de2229;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #053347;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+td img {
+  max-width: 60px;
+  border-radius: 4px;
+}
+
+.action-buttons button {
+  margin-right: 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+button.edit {
+  background-color: #007bff;
+}
+
+button.delete {
+  background-color: #dc3545;
+}
+
+
+.form-section h2,
+.table-section h2 {
+  margin-bottom: 1rem;
+  color: #053347;
+}
 
 
 

@@ -12,13 +12,16 @@
         <h1>Pro Athletic</h1>
         <nav>
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Productos</a></li>
+                <li><a href="index.html">Inicio</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="#">Carrito</a></li>
+                <li><a href="#" id="open-cart">🛒 Carrito</a></li>
+                <li><a href="admin.html">Admin</a></li>
+
             </ul>
         </nav>
     </header>
+
+    
 
     <section class="hero">
     <div class="hero-content">
@@ -54,7 +57,6 @@
 
         </div>
         </aside>
-        
 
         <main>
             <section class="product-grid">
@@ -97,9 +99,9 @@
       <h4>Enlaces</h4>
       <ul>
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="#">Productos</a></li>
-        <li><a href="/contacto.html">Contacto</a></li>
-        <li><a href="#">Carrito</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="#" id="open-cart">🛒 Carrito</a></li>
+        <li><a href="admin.html">Admin</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -112,6 +114,22 @@
     <p>&copy; 2025 Pro Athletic. Todos los derechos reservados.</p>
   </div>
 </footer>
+
+<!-- Sidebar del carrito -->
+<div id="cart-sidebar" class="cart-sidebar">
+  <div class="cart-header">
+    <h3>Tu Carrito</h3>
+    <button id="close-cart">&times;</button>
+  </div>
+  <div id="cart-items" class="cart-items"></div>
+  <div class="cart-footer">
+    <p>Total: $<span id="cart-total">0</span></p>
+    <button class="checkout-btn">Finalizar compra</button>
+  </div>
+</div>
+<div id="cart-overlay" class="cart-overlay"></div>
 </body>
+
 <script src="scripts/app.js"></script>
+<script src="scripts/carrito.js"></script>
 </html>

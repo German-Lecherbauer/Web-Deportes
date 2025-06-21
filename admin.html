@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin - Pro Athletic</title>
+  <link rel="stylesheet" href="/styles/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Panel de Administración</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/index.html">Productos</a></li>
+        <li><a href="/contacto.html">Contacto</a></li>
+        <li><a href="/admin.html" class="active">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="admin-container">
+    <section class="form-section">
+      <h2>Agregar Producto</h2>
+        <form id="product-form">
+        <input type="text" id="name" placeholder="Nombre" required />
+        <input type="number" id="price" placeholder="Precio" required />
+        <input type="url" id="image" placeholder="URL de la imagen" required />
+        <select id="category" required>
+            <option value="" disabled selected>Selecciona una categoría</option>
+            <option value="remeras">Remeras</option>
+            <option value="shorts">Shorts</option>
+            <option value="musculosas">Musculosas</option>
+            <option value="calzas">Calzas</option>
+            <option value="accesorios">Accesorios</option>
+            <option value="joggins">Joggins</option>
+            <option value="zapatillas">Zapatillas</option>
+
+        </select>
+        <button type="submit">Guardar</button>
+    </form>
+    </section>
+
+    <section class="table-section">
+      <h2>Productos Cargados</h2>
+      <table id="products-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+            <th>Imagen</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Productos se cargan aquí dinámicamente -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/scripts/admin.js"></script>
+</body>
+</html>

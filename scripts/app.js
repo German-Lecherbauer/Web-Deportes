@@ -29,12 +29,17 @@ const products = [];
     price.textContent = `$${product.price}`;
 
     const button = document.createElement('button');
-    button.textContent = 'Comprar';
-    button.classList.add('btn-buy');
+    button.textContent = 'Agregar al carrito';
+    button.classList.add('btn-buy');      // Para mantener tus estilos
+    button.classList.add('add-to-cart');  // Para que funcione el carrito
+    button.dataset.id = product.id;
+    button.dataset.name = product.name;
+    button.dataset.price = product.price;
 
     const link = document.createElement('a');
     link.textContent = 'Ver detalle';
     link.classList.add('btn-buy');
+    link.href = product.link;
 
     card.appendChild(img);
     card.appendChild(title);
@@ -66,7 +71,8 @@ function filterProducts(text){ //Define la función que se encarga de filtrar pr
             product.price.toString().includes(lowerText)
         );
     });
-    renderProducts(filteredProducts); //Llama a renderProducts() con los productos filtrados, para mostrarlos en pantalla.
+    renderProducts(filteredProducts);
+    attachAddToCartListeners(); //Llama a renderProducts() con los productos filtrados, para mostrarlos en pantalla.
 }
 
 
@@ -82,7 +88,6 @@ async function fetchProductsFromAirtable() {
 
         const data = await response.json();
 
-        // VERIFICAR SI LA RESPUESTA TIENE ERROR
         if (data.error) {
             console.error('Error de la API de Airtable:', data.error);
             return; // Cortá la ejecución para no usar data.records
@@ -95,7 +100,7 @@ async function fetchProductsFromAirtable() {
                 price: record.fields.Precio || 0,
                 image: record.fields.Imagen ? record.fields.Imagen[0].url : 'img/placeholder.png',
                 category: record.fields.Categoría || '',
-                link: '#'
+                link: record.fields.Link || '#'
             };
         });
 
@@ -149,3 +154,4 @@ searchInput.addEventListener('input', () => {
 });
 
 fetchProductsFromAirtable();
+
