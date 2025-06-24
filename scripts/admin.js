@@ -116,7 +116,7 @@ function deleteProduct(id) {
     });
 }
 
-// Prompt para editar producto
+// Editar producto
 function editProductPrompt(id, nombre, precio, categoría, imagenUrl) {
   const newName = prompt('Nuevo nombre:', nombre);
   const newPrice = prompt('Nuevo precio:', precio);

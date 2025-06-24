@@ -170,7 +170,6 @@ nav ul a {
   cursor: pointer;
 }
 
-
 .filtro-acciones {
   margin-top: 2rem;
   display: flex;
@@ -344,7 +343,7 @@ main {
   padding-top: 1rem;
 }
 
-/* Productos */
+/* PAGINA - Productos */
 
 body {
   background-color: #f5f5f5;
@@ -487,12 +486,10 @@ nav ul li a {
   overflow-y: auto;
 }
 
-/* Sidebar visible */
 .cart-sidebar.open {
   right: 0;
 }
 
-/* Overlay para el fondo */
 .cart-overlay {
   position: fixed;
   top: 0;
@@ -574,11 +571,103 @@ nav ul li a {
   border-radius: 5px;
 }
 
-/* Pagina contacto */
+/* PAGINA - Contacto */
+
+.hero-contacto {
+  background-image: url('/img/portada.jpg');
+  height: 200px;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  text-align: center;
+}
+
+.hero-contacto::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.hero-contacto .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Main para formulario */
+.main-formulario {
+  max-width: 600px;
+  margin: 2rem auto 4rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #053347;
+}
+
+/* Formulario */
+
+.contact-form .form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.contact-form label {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #053347;
+}
+
+.contact-form textarea {
+  min-height: 140px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #de2229;
+  box-shadow: 0 0 4px #de2229;
+}
+
+/* Botón enviar */
+
+.btn-submit {
+  background-color: #053347;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  font-weight: 700;
+}
+
+.btn-submit:hover {
+  background-color: #de2229;
+}
 
 
-
-/* Pagina Admin */
+/* PAGINA - Admin */
 
 .admin-container {
   display: flex;
@@ -658,47 +747,29 @@ button.delete {
   background-color: #dc3545;
 }
 
-
 .form-section h2,
 .table-section h2 {
   margin-bottom: 1rem;
   color: #053347;
 }
 
-
-
-
 /* ----------- MEDIA QUERIES ----------- */
 
 /* Celulares */
 
-@media (max-width: 600px) {
-  .container {
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav ul {
     flex-direction: column;
-  }
-
-  .filtros {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 1.5rem;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 1rem 0.5rem;
-  }
-
-  main {
-    padding: 1rem 0.5rem;
-  }
-
-  .product-grid {
-    grid-template-columns: 1fr;
-    padding: 0;
     gap: 1rem;
   }
 
   .hero {
-    height: 250px;
-    margin-bottom: 1.5rem;
+    height: 280px;
+    padding: 1rem;
   }
 
   .hero h2 {
@@ -709,75 +780,176 @@ button.delete {
     font-size: 1rem;
   }
 
-  nav ul {
+  .filtro-acciones {
     flex-direction: column;
-    gap: 1rem;
+  }
+
+  .btn-aplicar,
+  .btn-limpiar {
+    width: 100%;
+  }
+
+  .filtros {
+    width: 100%;
+    margin: 1rem;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .product-card {
+    padding: 0.75rem;
+  }
+
+  .product-card a.btn-buy {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cart-sidebar {
+    width: 100%;
+  }
+
+  .main-formulario {
+    padding: 1rem;
+  }
+
+  .hero-contacto {
+    height: 160px;
+    padding: 0 1rem;
+  }
+
+  .detalle-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .detalle-info p.descripcion {
+    font-size: 1rem;
+  }
+
+  .detalle-info p.precio {
+    font-size: 1.2rem;
+  }
+
+  .admin-container {
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table, table tbody, table tr, table td {
+    display: block;
+    width: 100%;
+  }
+
+  table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 1rem;
+  }
+
+  table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    width: 45%;
+    text-align: left;
+    font-weight: bold;
+  }
+}
+/* Tablets */
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .filtros {
+    width: 100%;
+    margin: 0 1rem 2rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    padding: 1rem 0;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
     align-items: center;
   }
 
-  nav ul a {
-    font-size: 1.2rem;
+  .producto-detalle {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .imagen-producto,
+  .detalle-info {
+    max-width: 100%;
+  }
+
+  .admin-container {
+    padding: 1rem;
+  }
+
+  .form-section,
+  .table-section {
+    padding: 1rem;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 1.5rem;
   }
 }
 
-/* Tablets*/
+/* Escritorio */
 
-@media (min-width: 601px) and (max-width: 900px) {
-  .container {
-    flex-direction: row;
-  }
-
-  .filtros {
-    width: 180px;
-    margin-left: 1rem;
-  }
-
-  main {
-    padding: 1.5rem 1rem;
-  }
-
+@media (min-width: 769px) and (max-width: 1024px) {
   .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .footer-container {
+    flex-wrap: wrap;
     gap: 1rem;
   }
 
-  .hero {
-    height: 300px;
-    margin-bottom: 1.8rem;
+  .admin-container {
+    max-width: 90%;
   }
 
-  .hero h2 {
-    font-size: 2.2rem;
+  .producto-detalle {
+    gap: 30px;
   }
 
-  .hero p {
-    font-size: 1.1rem;
-  }
-}
-
-/* Escritorios pequeños */
-
-@media (min-width: 901px) and (max-width: 1200px) {
-  .container {
-    flex-direction: row;
-  }
-
-  .filtros {
-    width: 220px;
-    margin-left: 1.5rem;
-  }
-
-  main {
-    padding: 2rem 1.5rem;
-  }
-
-  .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.2rem;
-  }
-
-  .hero {
-    height: 350px;
-    margin-bottom: 2rem;
+  .cart-sidebar {
+    width: 320px;
   }
 }

@@ -75,6 +75,52 @@ function filterProducts(text){ //Define la función que se encarga de filtrar pr
     attachAddToCartListeners(); //Llama a renderProducts() con los productos filtrados, para mostrarlos en pantalla.
 }
 
+const checkboxes = document.querySelectorAll('input[name="categoria"]');
+
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+        applyFilters();
+    });
+});
+
+function applyFilters() {
+    const selectedCategories = Array.from(checkboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+
+    const searchText = searchInput.value.toLowerCase();
+
+    const filtered = products.filter(product => {
+        const matchesText =
+            product.name.toLowerCase().includes(searchText) ||
+            product.description.toLowerCase().includes(searchText) ||
+            product.price.toString().includes(searchText);
+
+        const matchesCategory =
+            selectedCategories.length === 0 || selectedCategories.includes(product.category);
+
+        return matchesText && matchesCategory;
+    });
+
+    renderProducts(filtered);
+}
+
+// También actualizá este listener:
+searchInput.addEventListener('input', () => {
+    applyFilters();
+});
+
+//Limpiar filtros
+
+const limpiarBtn = document.querySelector('.btn-limpiar');
+
+limpiarBtn.addEventListener('click', () => {
+  checkboxes.forEach(checkbox => checkbox.checked = false);
+  searchInput.value = '';
+  renderProducts(products);
+  attachAddToCartListeners();
+});
+
 
  //Cargar productos desde air table
 
@@ -115,43 +161,6 @@ async function fetchProductsFromAirtable() {
         console.error('Error al traer productos desde Airtable:', error);
     }
 }
-
- /* Filtros Checkbok */
-
-const checkboxes = document.querySelectorAll('input[name="categoria"]');
-
-checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-        applyFilters();
-    });
-});
-
-function applyFilters() {
-    const selectedCategories = Array.from(checkboxes)
-        .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.value);
-
-    const searchText = searchInput.value.toLowerCase();
-
-    const filtered = products.filter(product => {
-        const matchesText =
-            product.name.toLowerCase().includes(searchText) ||
-            product.description.toLowerCase().includes(searchText) ||
-            product.price.toString().includes(searchText);
-
-        const matchesCategory =
-            selectedCategories.length === 0 || selectedCategories.includes(product.category);
-
-        return matchesText && matchesCategory;
-    });
-
-    renderProducts(filtered);
-}
-
-// También actualizá este listener:
-searchInput.addEventListener('input', () => {
-    applyFilters();
-});
 
 fetchProductsFromAirtable();
 
