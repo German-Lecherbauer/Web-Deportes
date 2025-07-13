@@ -1,3 +1,17 @@
+// Función para agregar eventos a botones "Agregar al carrito"
+function attachAddToCartListeners() {
+  document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+      const product = {
+        id: button.dataset.id,
+        name: button.dataset.name,
+        price: parseFloat(button.dataset.price)
+      };
+      addToCart(product);
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const API_TOKEN = 'patv3MjOov3yPa9fz.c6d73fc6340fc2cc9f136119de008878ee89d9358cb421b8d4ed4f92b5840bec'; 
   const BASE_ID = 'appQDPTOfv3whdbYR';
@@ -33,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   cartOverlay.addEventListener('click', closeCart);
 
   function updateCartCount() {
-    // Opcional: si tenés contador visible, acá lo actualizás
+    // Si querés mostrar la cantidad total en algún lugar, implementalo aquí
   }
 
   function updateCartTotal() {
@@ -115,19 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCart();
   }
 
-  function attachAddToCartListeners() {
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-      button.addEventListener('click', () => {
-        const product = {
-          id: button.dataset.id,
-          name: button.dataset.name,
-          price: parseFloat(button.dataset.price)
-        };
-        addToCart(product);
-      });
-    });
-  }
-
   fetch(API_URL, {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`
@@ -157,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data-price="${price}">
             Agregar al carrito
           </button>
-          <a href="${record.fields.Link || '#'}" class="btn-buy ver-detalle">Ver detalle</a>
+          <a href="${record.fields.Link || `detalle.html?id=${id}`}" class="btn-buy ver-detalle">Ver detalle</a>
         `;
 
         productsContainer.appendChild(productCard);
