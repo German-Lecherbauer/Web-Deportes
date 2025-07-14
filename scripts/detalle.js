@@ -3,56 +3,54 @@ const BASE_ID = 'appQDPTOfv3whdbYR';
 const TABLE_NAME = 'Productos-Deportes';
 const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
-// Obtener ID de la URL
+// Sacamos el id del producto de la URL
 const params = new URLSearchParams(window.location.search);
 const productId = params.get('id');
 
-const detailContainer = document.getElementById('product-detail');
+const detalleContenedor = document.getElementById('product-detail');
 
 if (!productId) {
-  detailContainer.innerHTML = `<p>No se encontró el ID del producto en la URL.</p>`;
+  detalleContenedor.innerHTML = '<p>No se encontró el producto.</p>';
 } else {
   fetch(`${API_URL}/${productId}`, {
-    headers: {
-      Authorization: `Bearer ${API_TOKEN}`,
-    },
+    headers: { Authorization: `Bearer ${API_TOKEN}` }
   })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`Error en la solicitud: ${res.status} - ${res.statusText}`);
-      }
+    .then(res => {
+      if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
       return res.json();
     })
-    .then((data) => {
+    .then(data => {
       if (data.error) {
-        detailContainer.innerHTML = `<p>Error al cargar el producto: ${data.error.message}</p>`;
+        detalleContenedor.innerHTML = `<p>Error: ${data.error.message}</p>`;
         return;
       }
 
-      // Procesar los datos
-      const product = {
+      // Datos a mostrar
+      const producto = {
         name: data.fields.Nombre || 'Sin nombre',
         description: data.fields.Descripción || 'Sin descripción',
         price: data.fields.Precio || 'Sin precio',
-        image: data.fields.Imagen && data.fields.Imagen.length > 0 ? data.fields.Imagen[0].url : 'img/placeholder.png',
+        image: data.fields.Imagen && data.fields.Imagen.length > 0
+          ? data.fields.Imagen[0].url
+          : 'img/placeholder.png'
       };
 
-      // Renderizar el producto
-      detailContainer.innerHTML = `
+      // Pintamos el detalle en la página
+      detalleContenedor.innerHTML = `
         <div class="imagen-producto">
-          <img src="${product.image}" alt="${product.name}" />
+          <img src="${producto.image}" alt="${producto.name}">
         </div>
         <div class="detalle-info">
-          <h2>${product.name}</h2>
-          <p class="descripcion">${product.description}</p>
-          <p class="precio"><strong>Precio:</strong> $${product.price}</p>
+          <h2>${producto.name}</h2>
+          <p class="descripcion">${producto.description}</p>
+          <p class="precio"><strong>Precio:</strong> $${producto.price}</p>
           <button>Comprar</button>
           <a href="index.html" class="btn-volver">Volver</a>
         </div>
       `;
     })
-    .catch((err) => {
-      detailContainer.innerHTML = `<p>Error al conectar con Airtable.</p>`;
+    .catch(err => {
+      detalleContenedor.innerHTML = '<p>Hubo un problema al cargar el producto.</p>';
       console.error(err);
     });
 }

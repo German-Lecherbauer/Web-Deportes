@@ -1,152 +1,111 @@
+// Configuración Airtable
 const API_TOKEN = 'patv3MjOov3yPa9fz.c6d73fc6340fc2cc9f136119de008878ee89d9358cb421b8d4ed4f92b5840bec';
 const BASE_ID = 'appQDPTOfv3whdbYR';
 const TABLE_NAME = 'Productos-Deportes';
 const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
-const products = [];
+// Variables para productos y elementos DOM
+const productos = [];
+const contenedorProductos = document.querySelector('.product-grid');
+const inputBusqueda = document.querySelector('#input-search-products');
+const checkboxesCategoria = document.querySelectorAll('input[name="categoria"]');
+const botonLimpiar = document.querySelector('.btn-limpiar');
 
-const grid = document.querySelector('.product-grid');
-const searchInput = document.querySelector('#input-search-products');
-const checkboxes = document.querySelectorAll('input[name="categoria"]');
-const limpiarBtn = document.querySelector('.btn-limpiar');
+// Función para crear la tarjeta HTML de un producto
+function crearTarjeta(producto) {
+  const tarjeta = document.createElement('article');
+  tarjeta.classList.add('product-card');
 
+  tarjeta.innerHTML = `
+    <img src="${producto.image}" alt="${producto.name}">
+    <h3>${producto.name}</h3>
+    <p>${producto.description}</p>
+    <p>$${producto.price}</p>
+    <button class="btn-buy add-to-cart"
+      data-id="${producto.id}"
+      data-name="${producto.name}"
+      data-price="${producto.price}">
+      Agregar al carrito
+    </button>
+    <a href="detalle.html?id=${producto.id}" class="btn-buy">Ver detalle</a>
+  `;
 
-if (grid) {
+  return tarjeta;
+}
 
-  function createProductCard(product) {
-    const card = document.createElement('article');
-    card.classList.add('product-card');
-
-    const img = document.createElement('img');
-    img.src = product.image;
-    img.alt = product.name;
-
-    const title = document.createElement('h3');
-    title.textContent = product.name;
-
-    const description = document.createElement('p');
-    description.textContent = product.description;
-
-    const price = document.createElement('p');
-    price.textContent = `$${product.price}`;
-
-    const button = document.createElement('button');
-    button.textContent = 'Agregar al carrito';
-    button.classList.add('btn-buy', 'add-to-cart');
-    button.dataset.id = product.id;
-    button.dataset.name = product.name;
-    button.dataset.price = product.price;
-
-    const link = document.createElement('a');
-    link.textContent = 'Ver detalle';
-    link.classList.add('btn-buy');
-    console.log('Producto al crear link:', product);
-    link.href = `detalle.html?id=${(product.id || '').trim()}`;
-
-    card.appendChild(img);
-    card.appendChild(title);
-    card.appendChild(description);
-    card.appendChild(price);
-    card.appendChild(button);
-    card.appendChild(link);
-
-    return card;
-  }
-
-  function renderProducts(list) {
-    grid.innerHTML = '';
-    list.forEach(product => {
-      const card = createProductCard(product);
-      grid.appendChild(card);
-    });
-  }
-
-  function filterProducts(text) {
-    const lowerText = text.toLowerCase();
-    const filteredProducts = products.filter(product =>
-      product.name.toLowerCase().includes(lowerText) ||
-      product.description.toLowerCase().includes(lowerText) ||
-      product.price.toString().includes(lowerText)
-    );
-    renderProducts(filteredProducts);
+// Función para mostrar la lista de productos en pantalla
+function mostrarProductos(lista) {
+  contenedorProductos.innerHTML = '';
+  lista.forEach(producto => {
+    const tarjeta = crearTarjeta(producto);
+    contenedorProductos.appendChild(tarjeta);
+  });
+  if (typeof attachAddToCartListeners === 'function') {
     attachAddToCartListeners();
   }
+}
 
-  function applyFilters() {
-    const selectedCategories = Array.from(checkboxes)
-      .filter(checkbox => checkbox.checked)
-      .map(checkbox => checkbox.value);
+// Función para aplicar filtros de búsqueda y categorías
+function aplicarFiltros() {
+  const texto = inputBusqueda.value.toLowerCase();
+  const categoriasSeleccionadas = Array.from(checkboxesCategoria)
+    .filter(cb => cb.checked)
+    .map(cb => cb.value);
 
-    const searchText = searchInput ? searchInput.value.toLowerCase() : '';
+  const filtrados = productos.filter(prod => {
+    const coincideTexto = 
+      prod.name.toLowerCase().includes(texto) ||
+      prod.description.toLowerCase().includes(texto) ||
+      prod.price.toString().includes(texto);
+    const coincideCategoria = categoriasSeleccionadas.length === 0 || categoriasSeleccionadas.includes(prod.category);
 
-    const filtered = products.filter(product => {
-      const matchesText =
-        product.name.toLowerCase().includes(searchText) ||
-        product.description.toLowerCase().includes(searchText) ||
-        product.price.toString().includes(searchText);
-
-      const matchesCategory =
-        selectedCategories.length === 0 || selectedCategories.includes(product.category);
-
-      return matchesText && matchesCategory;
-    });
-
-    renderProducts(filtered);
-    attachAddToCartListeners();
-  }
-
-  // Event listeners con protección
-  if (searchInput) {
-    searchInput.addEventListener('input', applyFilters);
-  }
-
-  checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', applyFilters);
+    return coincideTexto && coincideCategoria;
   });
 
-  if (limpiarBtn) {
-    limpiarBtn.addEventListener('click', () => {
-      checkboxes.forEach(checkbox => checkbox.checked = false);
-      if (searchInput) searchInput.value = '';
-      renderProducts(products);
-      attachAddToCartListeners();
+  mostrarProductos(filtrados);
+}
+
+// Limpiar filtros
+function limpiarFiltros() {
+  checkboxesCategoria.forEach(cb => cb.checked = false);
+  inputBusqueda.value = '';
+  mostrarProductos(productos);
+}
+
+// Traer productos desde Airtable y cargarlos
+async function cargarProductos() {
+  try {
+    const respuesta = await fetch(API_URL, {
+      headers: { Authorization: `Bearer ${API_TOKEN}` }
     });
-  }
-
-  async function fetchProductsFromAirtable() {
-    try {
-      const response = await fetch(API_URL, {
-        headers: {
-          Authorization: `Bearer ${API_TOKEN}`
-        }
-      });
-
-      const data = await response.json();
-
-      if (data.error) {
-        console.error('Error de la API de Airtable:', data.error);
-        return;
-      }
-
-      const airtableProducts = data.records.map(record => ({
-        id: record.id,
-        name: record.fields.Nombre || 'Sin nombre',
-        description: record.fields.Descripción || '',
-        price: record.fields.Precio || 0,
-        image: record.fields.Imagen ? record.fields.Imagen[0].url : 'img/placeholder.png',
-        category: record.fields.Categoría || '',
-        link: `detalle.html?id=${record.id}`
-      }));
-
-      renderProducts(airtableProducts);
-      products.length = 0;
-      products.push(...airtableProducts);
-      attachAddToCartListeners();
-
-    } catch (error) {
-      console.error('Error al traer productos desde Airtable:', error);
+    const data = await respuesta.json();
+    if (data.error) {
+      console.error('Error Airtable:', data.error);
+      return;
     }
+    const lista = data.records.map(record => ({
+      id: record.id,
+      name: record.fields.Nombre || 'Sin nombre',
+      description: record.fields.Descripción || '',
+      price: record.fields.Precio || 0,
+      image: record.fields.Imagen ? record.fields.Imagen[0].url : 'img/placeholder.png',
+      category: record.fields.Categoría || ''
+    }));
+    productos.length = 0;
+    productos.push(...lista);
+    mostrarProductos(productos);
+  } catch (error) {
+    console.error('Error cargando productos:', error);
+    contenedorProductos.innerHTML = '<p>Error al cargar productos.</p>';
   }
+}
 
-  fetchProductsFromAirtable();
+// Configurar eventos
+if (contenedorProductos) {
+  inputBusqueda.addEventListener('input', aplicarFiltros);
+  checkboxesCategoria.forEach(cb => cb.addEventListener('change', aplicarFiltros));
+  botonLimpiar.addEventListener('click', limpiarFiltros);
+
+  // Cargar productos al inicio
+  cargarProductos();
 }

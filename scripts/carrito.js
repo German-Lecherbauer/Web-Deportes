@@ -1,75 +1,59 @@
-// Función para agregar eventos a botones "Agregar al carrito"
-function attachAddToCartListeners() {
-  document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', () => {
-      const product = {
-        id: button.dataset.id,
-        name: button.dataset.name,
-        price: parseFloat(button.dataset.price)
-      };
-      addToCart(product);
-    });
-  });
-}
 
 document.addEventListener('DOMContentLoaded', () => {
-  const API_TOKEN = 'patv3MjOov3yPa9fz.c6d73fc6340fc2cc9f136119de008878ee89d9358cb421b8d4ed4f92b5840bec'; 
-  const BASE_ID = 'appQDPTOfv3whdbYR';
-  const TABLE_NAME = 'Productos-Deportes';
-  const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
+  // Elementos del carrito y variables
+  const sidebar = document.getElementById('cart-sidebar');
+  const overlay = document.getElementById('cart-overlay');
+  const btnAbrir = document.getElementById('open-cart');
+  const btnCerrar = document.getElementById('close-cart');
+  const contenedorItems = document.getElementById('cart-items');
+  const totalCarrito = document.getElementById('cart-total');
 
-  const productsContainer = document.querySelector('.product-grid');
-  const cartSidebar = document.getElementById('cart-sidebar');
-  const cartOverlay = document.getElementById('cart-overlay');
-  const openCartBtn = document.getElementById('open-cart');
-  const closeCartBtn = document.getElementById('close-cart');
-  const cartItemsContainer = document.getElementById('cart-items');
-  const cartTotal = document.getElementById('cart-total');
+  // Cargar carrito del localStorage o empezar vacío
+  let carrito = JSON.parse(localStorage.getItem('cart')) || [];
 
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-  function openCart() {
-    cartSidebar.classList.add('open');
-    cartOverlay.classList.add('show');
+  // Mostrar el sidebar del carrito
+  function mostrarCarrito() {
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
   }
 
-  function closeCart() {
-    cartSidebar.classList.remove('open');
-    cartOverlay.classList.remove('show');
+  // Ocultar el sidebar
+  function ocultarCarrito() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
   }
 
-  if (openCartBtn) openCartBtn.addEventListener('click', (e) => {
+  // Abrir carrito al click
+  if (btnAbrir) btnAbrir.addEventListener('click', e => {
     e.preventDefault();
-    openCart();
+    mostrarCarrito();
   });
 
-  closeCartBtn.addEventListener('click', closeCart);
-  cartOverlay.addEventListener('click', closeCart);
+  // Cerrar carrito
+  if (btnCerrar) btnCerrar.addEventListener('click', ocultarCarrito);
+  if (overlay) overlay.addEventListener('click', ocultarCarrito);
 
-  function updateCartCount() {
-    // Si querés mostrar la cantidad total en algún lugar, implementalo aquí
+  // Guardar carrito en localStorage
+  function guardarCarrito() {
+    localStorage.setItem('cart', JSON.stringify(carrito));
   }
 
-  function updateCartTotal() {
-    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    cartTotal.textContent = total.toLocaleString('es-AR');
+  // Calcular y mostrar total 
+  function actualizarTotal() {
+    const total = carrito.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    totalCarrito.textContent = total.toLocaleString('es-AR');
   }
 
-  function saveCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }
-
-  function renderCart() {
-    cartItemsContainer.innerHTML = '';
-
-    if (cart.length === 0) {
-      cartItemsContainer.innerHTML = '<p>El carrito está vacío.</p>';
-      updateCartCount();
-      updateCartTotal();
+  // Renderizar los productos en el carrito
+  function renderizarCarrito() {
+    contenedorItems.innerHTML = '';
+    if (carrito.length === 0) {
+      contenedorItems.innerHTML = '<p>El carrito está vacío.</p>';
+      actualizarTotal();
       return;
     }
 
-    cart.forEach((item, index) => {
+    carrito.forEach((item, index) => {
       const div = document.createElement('div');
       div.className = 'cart-item';
       div.innerHTML = `
@@ -80,96 +64,74 @@ document.addEventListener('DOMContentLoaded', () => {
           <button class="remove-item" data-index="${index}">Eliminar</button>
         </div>
       `;
-      cartItemsContainer.appendChild(div);
+      contenedorItems.appendChild(div);
     });
 
+
+    // Eventos para botones de control
     document.querySelectorAll('.remove-item').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const index = e.target.getAttribute('data-index');
-        cart.splice(index, 1);
-        saveCart();
-        renderCart();
+      btn.addEventListener('click', e => {
+        const i = e.target.dataset.index;
+        carrito.splice(i, 1);
+        guardarCarrito();
+        renderizarCarrito();
       });
     });
 
     document.querySelectorAll('.increase-qty').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const index = e.target.getAttribute('data-index');
-        cart[index].quantity++;
-        saveCart();
-        renderCart();
+      btn.addEventListener('click', e => {
+        const i = e.target.dataset.index;
+        carrito[i].quantity++;
+        guardarCarrito();
+        renderizarCarrito();
       });
     });
 
     document.querySelectorAll('.decrease-qty').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const index = e.target.getAttribute('data-index');
-        if (cart[index].quantity > 1) {
-          cart[index].quantity--;
+      btn.addEventListener('click', e => {
+        const i = e.target.dataset.index;
+        if (carrito[i].quantity > 1) {
+          carrito[i].quantity--;
         } else {
-          cart.splice(index, 1);
+          carrito.splice(i, 1);
         }
-        saveCart();
-        renderCart();
+        guardarCarrito();
+        renderizarCarrito();
       });
     });
 
-    updateCartCount();
-    updateCartTotal();
+    actualizarTotal();
   }
 
-  function addToCart(product) {
-    const existingItem = cart.find(item => item.id === product.id);
-    if (existingItem) {
-      existingItem.quantity++;
+  // Función para agregar producto al carrito
+
+  window.attachAddToCartListeners = function() {
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        const producto = {
+          id: button.dataset.id,
+          name: button.dataset.name,
+          price: parseFloat(button.dataset.price)
+        };
+        agregarAlCarrito(producto);
+      });
+    });
+  };
+
+  function agregarAlCarrito(producto) {
+    const existente = carrito.find(item => item.id === producto.id);
+    if (existente) {
+      existente.quantity++;
     } else {
-      cart.push({ ...product, quantity: 1 });
+      carrito.push({...producto, quantity: 1});
     }
-    saveCart();
-    renderCart();
+    guardarCarrito();
+    renderizarCarrito();
   }
 
-  fetch(API_URL, {
-    headers: {
-      Authorization: `Bearer ${API_TOKEN}`
-    }
-  })
-    .then(res => res.json())
-    .then(data => {
-      productsContainer.innerHTML = ''; // limpiar productos viejos
+  // Hacemos global la función para que app.js pueda llamarla 
+  window.agregarAlCarrito = agregarAlCarrito;
 
-      data.records.forEach(record => {
-        const id = record.id;
-        const name = record.fields.Nombre;
-        const price = record.fields.Precio;
-        const imageUrl = record.fields.Imagen?.[0]?.url || 'img/placeholder.png';
-
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-
-        productCard.innerHTML = `
-          <img src="${imageUrl}" alt="${name}" />
-          <h3>${name}</h3>
-          <p>$${price.toLocaleString('es-AR')}</p>
-          <button 
-            class="add-to-cart btn-buy"
-            data-id="${id}"
-            data-name="${name}"
-            data-price="${price}">
-            Agregar al carrito
-          </button>
-          <a href="${record.fields.Link || `detalle.html?id=${id}`}" class="btn-buy ver-detalle">Ver detalle</a>
-        `;
-
-        productsContainer.appendChild(productCard);
-      });
-
-      attachAddToCartListeners();
-    })
-    .catch(error => {
-      console.error('Error al cargar productos:', error);
-      productsContainer.innerHTML = '<p>Error al cargar productos.</p>';
-    });
-
-  renderCart();
+  // Inicializamos el carrito en pantalla
+  renderizarCarrito();
 });
