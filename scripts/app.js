@@ -49,8 +49,8 @@ function mostrarProductos(lista) {
 function aplicarFiltros() {
   const texto = inputBusqueda.value.toLowerCase();
   const categoriasSeleccionadas = Array.from(checkboxesCategoria)
-    .filter(cb => cb.checked)
-    .map(cb => cb.value);
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value);
 
   const filtrados = productos.filter(prod => {
     const coincideTexto = 
